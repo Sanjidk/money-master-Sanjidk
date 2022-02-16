@@ -1,11 +1,23 @@
 
 .heading-part{
   font-family: 'Roboto', sans-serif;
-  text-align: center;
-  color: rgb(255, 0, 0);
-  font-size: 45px;
+  color: rgb(1, 1, 96);
 }
 
 .head-color{
-  color: rgb(1, 1, 130);
+  color: rgb(232, 0, 0);
+}
+
+.form-part{
+  background-color: rgba(210, 255, 255, 0.585);
+  border-radius: 20px;
+}
+
+.all-form-font{
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.main-img img{
+  width: 100%;
 }
