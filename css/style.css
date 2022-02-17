@@ -1,23 +1,28 @@
+body{
+  background-color: rgba(220, 255, 250, 0.809);
+}
 
+
+
+/* All Class */
 .heading-part{
   font-family: 'Roboto', sans-serif;
   color: rgb(1, 1, 96);
 }
-
 .head-color{
   color: rgb(232, 0, 0);
 }
-
 .form-part{
   background-color: rgba(210, 255, 255, 0.585);
   border-radius: 20px;
 }
-
 .all-form-font{
   font-family: 'Roboto', sans-serif;
-
 }
-
 .main-img img{
   width: 100%;
+}
+.calculation-form{
+  background-color: rgb(189, 202, 255);
+  border-radius: 15px;
 }
