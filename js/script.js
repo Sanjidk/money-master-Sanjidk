@@ -9,7 +9,6 @@ allCalculationButton.addEventListener('click', allCalculation);
   const myBudgetString = myBudgetInput.value;
   const myBudgetAmount = parseFloat(myBudgetString);
   
-  
   // My Expenses...............
   // Processor
   const processorInput = document.getElementById('processor-input');
@@ -27,24 +26,25 @@ allCalculationButton.addEventListener('click', allCalculation);
   const hardDiskAmount = parseFloat(hardDiskString);
 
 
+  // Calculation Expenses 
+  const totalExpensesAmount = processorAmount + ramRomAmount + hardDiskAmount;
 
-  // Error Handle
-
+  // Error Handle for Negative Number ,, String,, Compare Budget...
     if ( myBudgetAmount<0 || processorAmount<0 || ramRomAmount<0 || hardDiskAmount<0 ) {
       alert('Error... Negative Number is Not Allow. Please Enter Positive Number ');
     }
-
-    // else if ((typeof(myBudgetAmount == 'string')) || (typeof(processorAmount == 'string')) || (typeof(ramRomAmount == 'string')) || (typeof(hardDiskAmount == 'string')) ){
-    //   alert('Error... String is Not Allow. Please Inter Number ');
-    // }
-else{
-    const totalExpensesAmount = processorAmount + ramRomAmount + hardDiskAmount;
-
+    else if (isNaN(myBudgetAmount) || isNaN(processorAmount) || isNaN(ramRomAmount) || isNaN(hardDiskAmount)){
+      alert('Error... Please Enter Positive Number ');
+    }
+    else if (myBudgetAmount< totalExpensesAmount) {
+        alert('Error... Your Expenses is HIgher than Your Budget');
+      }
+    else
+    {
     const remainingBalanceAmount = myBudgetAmount - totalExpensesAmount;
 
     const totalExpenses = document.getElementById('total-expenses');
     totalExpenses.innerText = totalExpensesAmount;
-
 
     const remainingBalance = document.getElementById('remaining-amount');
     remainingBalance.innerText = remainingBalanceAmount;
@@ -54,39 +54,51 @@ else{
     // ramRomInput.value = '';
     // hardDiskInput.value = '';
 }
-
-  }
-
+}
 
 // Savings Calculation
 const savingButton = document.getElementById('saving-button');
 savingButton.addEventListener('click', savingBalance );
 
 function savingBalance(){
-
-  
   
   // My Budget................
-  const myBudgetInput = document.getElementById('my-budget-input');
-  const myBudgetAmount = parseInt(myBudgetInput.value);
+  const BudgetInput = document.getElementById('my-budget-input');
+  const BudgetString = BudgetInput.value;
+  const BudgetAmount = parseFloat(BudgetString);
   
   // Saving Balance Input.......
   const savingInput = document.getElementById('saving-input');
-  const savingAmount = parseInt(savingInput.value);
+  const savingString = savingInput.value;
+  const savingAmount = parseFloat(savingString);
 
-  const totalSave = ( myBudgetAmount * savingAmount ) / 100 ;
   
+  const totalSave = ( BudgetAmount * savingAmount ) / 100 ;
+
+  const saveBalance = document.getElementById('remaining-amount').innerText;
+
+
+  // Error Handle for Negative value,, String,, and Compare
+  if (totalSave > saveBalance ) {
+    alert('Input Error... You Do not have much Amount for Saving');
+    
+  }
+  else if (savingAmount<0 || isNaN(savingAmount)) {
+    alert('Input Error... Please Input Positive Number');
+
+  }
+  else{
   const savingBalanceAmount = document.getElementById('saving-amount');
   savingBalanceAmount.innerText = totalSave;
 
-
   // Final Balance......
   const balance = document.getElementById('remaining-amount');
-  const finalBalance = parseInt(balance.innerText) - totalSave;
+  const balanceString = balance.innerText - totalSave
+  const finalBalance = parseFloat(balanceString);
 
   const finalBalanceAmount = document.getElementById('final-balance');
   finalBalanceAmount.innerText = finalBalance;
 
       // savingInput.value = '';
-
+}
 }
